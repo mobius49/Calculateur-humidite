@@ -1,0 +1,10 @@
+{
+  "name":"Calculateur d'humidité",
+  "short_name":"Humidité",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#eef3f7",
+  "theme_color":"#1769aa",
+  "lang":"fr-FR",
+  "icons":[]
+}
