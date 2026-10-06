@@ -1,6 +1,17 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v21
+- Remplacement du champ météo par une aide à la saisie avec suggestions de communes françaises correspondant au texte saisi.
+- Les suggestions affichent le nom de la ville et son code postal.
+- Utilisation de la Base Adresse Nationale (API adresse.data.gouv.fr) pour la recherche des communes, sans compte ni clé.
+- La dernière ville sélectionnée reste mémorisée comme favori local.
+- Le nom de la ville reste utilisé comme champ « Pièce » lors de l’archivage.
+- Suppression dans l’encadré « Météo extérieure » de la ligne de statut évolutif selon l’humidité.
+- Suppression de la ligne indiquant l’humidité relative correspondant à 10 g/m³.
+- Conservation de la température, de l’humidité relative, de l’humidité absolue et du point de rosée.
+- Conservation des fonctions d’archivage et de récupération Open-Meteo.
+
 v20
 - Ajout d'un encadré « Météo extérieure » sous l'encadré « Mesure ».
 - Ajout d'un champ de ville avec mémorisation de la dernière ville choisie comme favori local.

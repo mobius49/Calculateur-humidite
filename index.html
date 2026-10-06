@@ -24,7 +24,7 @@ input[type=range]{width:100%;accent-color:#1769aa}.range-row{display:flex;align-
 .empty{text-align:center;color:#66727e;padding:20px}.install{display:none;margin-top:12px;border:0;border-radius:12px;padding:11px 14px;background:white;color:#1769aa;font-weight:700}
 .modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:20}.modal.open{display:flex}.sheet{background:white;width:100%;max-width:620px;border-radius:22px 22px 0 0;padding:18px 16px 24px;max-height:85vh;overflow:auto}.sheet h3{margin:0 0 6px;font-size:20px}.sheet p{margin:0 0 14px;color:#66727e;font-size:13px}.room-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}.room{width:100%;text-align:left;background:#f4f7f9;border:1px solid #dce4e9;border-radius:13px;padding:13px;font-weight:700;font-size:15px}.close{margin-top:12px;width:100%}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:15px}.room-list{grid-template-columns:1fr}}
-footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.weather-city-row{display:flex;gap:10px;align-items:end}.weather-city-row>div{flex:1}.weather-city-row .button{white-space:nowrap}.weather-meta{margin-top:10px}.weather-status{margin-top:10px;font-weight:700}.weather-status.ok{color:#16723b}.weather-status.warn{color:#9b6500}.weather-status.bad{color:#b42318}@media(max-width:560px){.weather-grid{grid-template-columns:1fr}.weather-city-row{align-items:stretch;flex-direction:column}.weather-city-row .button{width:100%}}
+footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.weather-city-row{display:flex;gap:10px;align-items:end}.weather-city-row>div{flex:1}.weather-city-row .button{white-space:nowrap}.weather-meta{margin-top:10px}.weather-status{margin-top:10px;font-weight:700}.weather-status.ok{color:#16723b}.weather-status.warn{color:#9b6500}.weather-status.bad{color:#b42318}.city-suggestions{position:relative}.city-suggestions-list{position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border:1px solid #c9d3dc;border-radius:0 0 12px 12px;box-shadow:0 5px 14px #0002;overflow:hidden}.city-suggestion{display:block;width:100%;padding:11px 12px;text-align:left;border:0;border-bottom:1px solid #edf1f4;background:#fff;font:inherit;cursor:pointer}.city-suggestion:last-child{border-bottom:0}.city-suggestion:hover{background:#f1f6fa}.city-suggestion small{color:#66727e}@media(max-width:560px){.weather-grid{grid-template-columns:1fr}.weather-city-row{align-items:stretch;flex-direction:column}.weather-city-row .button{width:100%}}
 </style>
 </head>
 <body>
@@ -37,7 +37,7 @@ footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-
 
 <section class="card"><h2>Météo extérieure</h2>
 <div class="weather-city-row">
-<div><label for="weatherCity">Ville</label><input id="weatherCity" type="text" value="Angers" placeholder="Ex. Angers" autocomplete="off" style="width:100%;font-size:18px;padding:12px;border:1px solid #c9d3dc;border-radius:12px;background:#fff"></div>
+<div class="city-suggestions"><label for="weatherCity">Ville</label><input id="weatherCity" type="text" value="Angers" placeholder="Ex. Angers" autocomplete="off" style="width:100%;font-size:18px;padding:12px;border:1px solid #c9d3dc;border-radius:12px;background:#fff"><div id="citySuggestions" class="city-suggestions-list" hidden></div></div>
 <button id="weatherRefresh" class="button primary" type="button">🔄 Actualiser</button>
 </div>
 <div id="weatherMessage" class="muted" style="margin-top:9px">Entrez une ville puis actualisez pour récupérer les données.</div>
@@ -47,8 +47,6 @@ footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-
 <div><div class="muted">Humidité relative</div><div id="weatherRh" class="big"></div></div>
 </div>
 <div style="margin-top:12px"><div class="muted">Humidité absolue</div><div id="weatherAbs" class="big"></div></div>
-<div id="weatherStatus" class="status"></div>
-<div class="muted">Humidité relative correspondant à 10 g/m³ : <strong id="weatherMax"></strong></div>
 <div class="muted">Point de rosée : <strong id="weatherDew"></strong></div>
 <div class="muted weather-meta">Donnée météo : <strong id="weatherObserved"></strong></div>
 <div class="muted">Source : Open-Meteo</div>
@@ -60,7 +58,7 @@ footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-
 <section class="card"><h2>Historique</h2><div class="filter-bar"><button id="resetFilters" class="button secondary" type="button">✖ Effacer les filtres</button><span class="muted">Les filtres s'appliquent à chaque colonne. Pour les valeurs numériques : <strong>&gt;20</strong>, <strong>&lt;50</strong>, <strong>20-25</strong> ou une valeur précise.</span></div><div class="table-wrap"><table class="archive-table"><thead><tr><th>Date</th><th>Heure</th><th>Pièce</th><th>Température</th><th>HR</th><th>Humidité absolue</th><th>HR max 10 g/m³</th><th>Point de rosée</th><th>Statut</th><th>Action</th></tr><tr class="filter-row"><th><input class="filter-input filter-date" id="filterDate" type="date" aria-label="Choisir une date"></th><th><select class="filter-input filter-hour" id="filterTime"><option value="">Toutes les heures</option></select></th><th><select class="filter-input" id="filterRoom"><option value="">Toutes</option></select></th><th><input class="filter-input" id="filterT" type="text" inputmode="decimal" placeholder="ex. &gt;20"></th><th><input class="filter-input" id="filterRh" type="text" inputmode="decimal" placeholder="ex. 50-70"></th><th><input class="filter-input" id="filterAbs" type="text" inputmode="decimal" placeholder="ex. &gt;10"></th><th><input class="filter-input" id="filterMax" type="text" inputmode="decimal" placeholder="ex. &lt;60"></th><th><input class="filter-input" id="filterDew" type="text" inputmode="decimal" placeholder="ex. 10-15"></th><th><select class="filter-input" id="filterStatus"><option value="">Tous</option><option value="L'air est trop sec">L'air est trop sec</option><option value="L'air est un peu trop sec">L'air est un peu trop sec</option><option value="Humidité absolue correcte">Humidité absolue correcte</option><option value="Humidité absolue à surveiller">Humidité absolue à surveiller</option><option value="Humidité absolue trop élevée">Humidité absolue trop élevée</option></select></th><th></th></tr></thead><tbody id="archiveBody"></tbody></table></div></section>
 <section class="card"><h2>Repères</h2><div class="table-wrap"><table class="archive-table" style="min-width:0"><thead><tr><th>Humidité absolue</th><th>Ressenti</th></tr></thead><tbody><tr><td>0–4 g/m³</td><td>L'air est trop sec</td></tr><tr><td>4–6 g/m³</td><td>L'air est un peu trop sec</td></tr><tr><td>6–10 g/m³</td><td>Humidité absolue correcte</td></tr><tr><td>10–12 g/m³</td><td>Humidité absolue à surveiller</td></tr><tr><td>&gt; 12 g/m³</td><td>Humidité absolue trop élevée</td></tr></tbody></table></div></section>
 <section class="card"><h2>Données climatiques de référence</h2><p class="muted">Ordres de grandeur mensuels pour la France métropolitaine. L'humidité absolue est calculée à partir de la température moyenne et de l'humidité relative moyenne mensuelles.</p><div class="table-wrap"><table class="archive-table" style="min-width:0"><thead><tr><th>Mois</th><th>Humidité absolue moyenne</th></tr></thead><tbody><tr><td>Janvier</td><td>5,5 g/m³</td></tr><tr><td>Février</td><td>5,5 g/m³</td></tr><tr><td>Mars</td><td>6,6 g/m³</td></tr><tr><td>Avril</td><td>8,1 g/m³</td></tr><tr><td>Mai</td><td>10,0 g/m³</td></tr><tr><td>Juin</td><td>12,6 g/m³</td></tr><tr><td>Juillet</td><td>13,7 g/m³</td></tr><tr><td>Août</td><td>13,1 g/m³</td></tr><tr><td>Septembre</td><td>10,9 g/m³</td></tr><tr><td>Octobre</td><td>9,1 g/m³</td></tr><tr><td>Novembre</td><td>7,1 g/m³</td></tr><tr><td>Décembre</td><td>5,9 g/m³</td></tr></tbody></table></div><p class="muted" style="margin-top:10px">Référence climatique : températures et humidités relatives mensuelles moyennes pour la France. L'humidité absolue est dérivée de ces valeurs avec la même relation de calcul que celle utilisée par le calculateur.</p></section>
-<footer>Version 20 · créée le 6 octobre 2026</footer>
+<footer>Version 21 · créée le 6 octobre 2026</footer>
 </main>
 <div id="roomModal" class="modal" aria-hidden="true"><div class="sheet"><h3>Choisir la pièce</h3><p>La mesure actuelle sera enregistrée immédiatement avec la pièce choisie.</p><div id="roomList" class="room-list"></div><button id="closeModal" class="button secondary close">Annuler</button></div></div>
 <script>
@@ -77,40 +75,75 @@ function backupArchives(){if(!archives.length){alert('Aucune mesure à sauvegard
 function restoreArchives(file){const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);const imported=Array.isArray(data)?data:data.archives;if(!Array.isArray(imported))throw new Error('format');const valid=imported.filter(r=>r&&r.room&&r.measure!=null&&r.t!=null&&r.rh!=null);if(!valid.length&&imported.length)throw new Error('invalid');if(archives.length&& !confirm('Remplacer l’historique actuel par la sauvegarde ?'))return;archives=valid;saveArchives();alert(valid.length+' mesure'+(valid.length>1?'s':'')+' restaurée'+(valid.length>1?'s':'')+'.')}catch(e){alert('Fichier de sauvegarde invalide.')}};reader.readAsText(file)}
 
 const weatherCityKey='humiditeWeatherCityV1';
+const weatherCityDataKey='humiditeWeatherCityDataV1';
 let weatherCurrent=null;
+let selectedWeatherPlace=null;
+let citySuggestTimer=null;
 const weatherCity=document.getElementById('weatherCity');
-try{const savedCity=localStorage.getItem(weatherCityKey);if(savedCity)weatherCity.value=savedCity;}catch(e){}
-weatherCity.addEventListener('change',()=>{try{localStorage.setItem(weatherCityKey,weatherCity.value.trim())}catch(e){}});
+const citySuggestions=document.getElementById('citySuggestions');
+try{
+ const savedCity=localStorage.getItem(weatherCityKey);
+ const savedData=JSON.parse(localStorage.getItem(weatherCityDataKey)||'null');
+ if(savedCity)weatherCity.value=savedCity;
+ if(savedData && savedData.city===weatherCity.value.trim())selectedWeatherPlace=savedData;
+}catch(e){}
+function saveWeatherFavorite(place){try{localStorage.setItem(weatherCityKey,place.city);localStorage.setItem(weatherCityDataKey,JSON.stringify(place));}catch(e){}}
+function hideCitySuggestions(){citySuggestions.hidden=true;citySuggestions.innerHTML='';}
+function showCitySuggestions(results){
+ citySuggestions.innerHTML='';
+ results.forEach(place=>{
+   const b=document.createElement('button');b.type='button';b.className='city-suggestion';
+   const city=place.city||place.label||'';const pc=place.postcode||'';
+   b.innerHTML='<strong>'+city.replace(/</g,'&lt;')+'</strong> <small>'+pc.replace(/</g,'&lt;')+'</small>';
+   b.addEventListener('click',()=>{selectedWeatherPlace={city,postcode:pc,latitude:Number(place.lat),longitude:Number(place.lon)};weatherCity.value=city;saveWeatherFavorite(selectedWeatherPlace);hideCitySuggestions();});
+   citySuggestions.appendChild(b);
+ });
+ citySuggestions.hidden=!results.length;
+}
+async function suggestCities(){
+ const q=weatherCity.value.trim();selectedWeatherPlace=null;
+ if(q.length<2){hideCitySuggestions();return;}
+ try{
+   const url='https://api-adresse.data.gouv.fr/search/?q='+encodeURIComponent(q)+'&type=municipality&limit=8';
+   const resp=await fetch(url,{cache:'no-store'});if(!resp.ok)throw new Error('Recherche de ville HTTP '+resp.status);
+   const data=await resp.json();
+   const results=(data.features||[]).map(f=>({city:f.properties.city,postcode:f.properties.postcode,lat:f.geometry.coordinates[1],lon:f.geometry.coordinates[0],label:f.properties.label})).filter(x=>x.city&&x.postcode);
+   const seen=new Set();showCitySuggestions(results.filter(x=>{const k=x.city+'|'+x.postcode;if(seen.has(k))return false;seen.add(k);return true;}));
+ }catch(e){hideCitySuggestions();}
+}
+weatherCity.addEventListener('input',()=>{clearTimeout(citySuggestTimer);citySuggestTimer=setTimeout(suggestCities,250);});
+weatherCity.addEventListener('focus',()=>{if(weatherCity.value.trim().length>=2)suggestCities();});
+weatherCity.addEventListener('blur',()=>setTimeout(hideCitySuggestions,180));
 function weatherStatus(abs){if(abs<=4)return"L'air est trop sec";if(abs<=6)return"L'air est un peu trop sec";if(abs<=10)return"Humidité absolue correcte";if(abs<=12)return"Humidité absolue à surveiller";return"Humidité absolue trop élevée";}
 async function getWeather(){
  const city=weatherCity.value.trim();
  const msg=document.getElementById('weatherMessage'), result=document.getElementById('weatherResult'), archiveBtn=document.getElementById('weatherArchive');
  if(!city){msg.textContent='Veuillez saisir une ville.';result.style.display='none';archiveBtn.disabled=true;return;}
- try{localStorage.setItem(weatherCityKey,city)}catch(e){}
- msg.textContent='⏳ Recherche de la ville et récupération des données…';result.style.display='none';archiveBtn.disabled=true;
+ hideCitySuggestions();msg.textContent='⏳ Recherche de la ville et récupération des données…';result.style.display='none';archiveBtn.disabled=true;
  try{
-   const geoUrl='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&count=1&language=fr&countryCode=FR&format=json';
-   const geoResp=await fetch(geoUrl,{cache:'no-store'}); if(!geoResp.ok)throw new Error('Géocodage HTTP '+geoResp.status);
-   const geo=await geoResp.json(); if(!geo.results||!geo.results.length)throw new Error('Ville introuvable');
-   const place=geo.results[0];
-   const displayCity=place.name;
+   let place=selectedWeatherPlace;
+   if(!place || place.city.toLocaleLowerCase('fr-FR')!==city.toLocaleLowerCase('fr-FR')){
+     const geoUrl='https://api-adresse.data.gouv.fr/search/?q='+encodeURIComponent(city)+'&type=municipality&limit=1';
+     const geoResp=await fetch(geoUrl,{cache:'no-store'});if(!geoResp.ok)throw new Error('Recherche de ville HTTP '+geoResp.status);
+     const geo=await geoResp.json();if(!geo.features||!geo.features.length)throw new Error('Ville introuvable');
+     const f=geo.features[0];place={city:f.properties.city,postcode:f.properties.postcode,latitude:Number(f.geometry.coordinates[1]),longitude:Number(f.geometry.coordinates[0])};
+   }
+   saveWeatherFavorite(place);selectedWeatherPlace=place;weatherCity.value=place.city;
    const weatherUrl='https://api.open-meteo.com/v1/forecast?latitude='+encodeURIComponent(place.latitude)+'&longitude='+encodeURIComponent(place.longitude)+'&current=temperature_2m,relative_humidity_2m,dew_point_2m&timezone=Europe%2FParis';
-   const resp=await fetch(weatherUrl,{cache:'no-store'}); if(!resp.ok)throw new Error('Météo HTTP '+resp.status);
-   const data=await resp.json(); const c=data.current;
-   const t=Number(c.temperature_2m),rh=Number(c.relative_humidity_2m),dew=Number(c.dew_point_2m); if(!Number.isFinite(t)||!Number.isFinite(rh)||!Number.isFinite(dew))throw new Error('Données météo incomplètes');
+   const resp=await fetch(weatherUrl,{cache:'no-store'});if(!resp.ok)throw new Error('Météo HTTP '+resp.status);
+   const data=await resp.json();const c=data.current;
+   const t=Number(c.temperature_2m),rh=Number(c.relative_humidity_2m),dew=Number(c.dew_point_2m);if(!Number.isFinite(t)||!Number.isFinite(rh)||!Number.isFinite(dew))throw new Error('Données météo incomplètes');
    const values=calc(t,rh);
-   weatherCurrent={city:displayCity,t,rh,abs:values.abs,max:values.max,dew,status:values.status,weatherTime:c.time,latitude:place.latitude,longitude:place.longitude};
+   weatherCurrent={city:place.city,t,rh,abs:values.abs,dew,status:values.status,weatherTime:c.time,latitude:place.latitude,longitude:place.longitude,postcode:place.postcode};
    document.getElementById('weatherTemp').textContent=fmt(t,1)+' °C';
    document.getElementById('weatherRh').textContent=fmt(rh,0)+' %';
    document.getElementById('weatherAbs').textContent=fmt(values.abs,2)+' g/m³';
-   const st=document.getElementById('weatherStatus');st.textContent=values.status;st.className='status '+(values.abs<=10?'ok':values.abs<=12?'warn':'bad');
-   document.getElementById('weatherMax').textContent=fmt(values.max,1)+' %';
    document.getElementById('weatherDew').textContent=fmt(dew,1)+' °C';
-   document.getElementById('weatherObserved').textContent=displayCity+' · '+c.time;
-   result.style.display='block'; archiveBtn.disabled=false; msg.textContent='✅ Données récupérées avec Open-Meteo.';
+   document.getElementById('weatherObserved').textContent=place.city+' ('+place.postcode+') · '+c.time;
+   result.style.display='block';archiveBtn.disabled=false;msg.textContent='✅ Données récupérées avec Open-Meteo.';
  }catch(e){weatherCurrent=null;result.style.display='none';archiveBtn.disabled=true;msg.textContent='❌ '+e.message+'. Vérifiez le nom de la ville et votre connexion internet.';}
 }
-function archiveWeather(){if(!weatherCurrent)return;const now=new Date(),w=weatherCurrent;const row={date:now.toLocaleDateString('fr-FR'),time:now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}),timestamp:now.toISOString(),room:w.city,measure:'Météo',t:w.t,rh:w.rh,abs:w.abs,max:w.max,dew:w.dew,status:w.status,weatherSource:'Open-Meteo',weatherTime:w.weatherTime,latitude:w.latitude,longitude:w.longitude};archives.push(row);saveArchives();document.getElementById('weatherMessage').textContent='✅ Mesure météo archivée pour '+w.city+'.';}
+function archiveWeather(){if(!weatherCurrent)return;const now=new Date(),w=weatherCurrent;const row={date:now.toLocaleDateString('fr-FR'),time:now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}),timestamp:now.toISOString(),room:w.city,measure:'Météo',t:w.t,rh:w.rh,abs:w.abs,max:null,dew:w.dew,status:w.status,weatherSource:'Open-Meteo',weatherTime:w.weatherTime,latitude:w.latitude,longitude:w.longitude};archives.push(row);saveArchives();document.getElementById('weatherMessage').textContent='✅ Mesure météo archivée pour '+w.city+'.';}
 document.getElementById('weatherRefresh').addEventListener('click',getWeather);document.getElementById('weatherArchive').addEventListener('click',archiveWeather);weatherCity.addEventListener('keydown',e=>{if(e.key==='Enter')getWeather();});
 function archiveCurrent(room,n){const now=new Date(),m=getMeasure(n);const row={date:now.toLocaleDateString('fr-FR'),time:now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}),timestamp:now.toISOString(),room,measure:n,t:m.t,rh:m.rh,abs:m.abs,max:m.max,dew:m.dew,status:m.status};archives.push(row);saveArchives();closeModal();}
 function deleteArchive(index){const r=archives[index];if(!r)return;if(!confirm('Supprimer cette mesure de l’historique ?\n\nCette action ne supprimera pas un éventuel fichier JSON de sauvegarde déjà téléchargé.'))return;archives.splice(index,1);saveArchives();}
