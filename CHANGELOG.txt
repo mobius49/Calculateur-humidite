@@ -1,6 +1,11 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v22
+- Lors de l’archivage d’une mesure météo Open-Meteo, le champ « HR max 10 g/m³ » reste affiché « - ».
+- Lors de l’archivage d’une mesure météo Open-Meteo, le champ « Statut » est désormais enregistré et affiché « - ».
+- Les valeurs calculées de température, humidité relative, humidité absolue et point de rosée restent inchangées.
+
 v21
 - Remplacement du champ météo par une aide à la saisie avec suggestions de communes françaises correspondant au texte saisi.
 - Les suggestions affichent le nom de la ville et son code postal.

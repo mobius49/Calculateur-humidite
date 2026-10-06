@@ -1,4 +1,4 @@
-const CACHE='humidite-pwa-v21';
+const CACHE='humidite-pwa-v22';
 const FILES=['./','./index.html','./manifest.webmanifest','./sw.js','./robots.txt','./CHANGELOG.txt'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))) });
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
