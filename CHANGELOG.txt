@@ -1,48 +1,60 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v20
+- Ajout d'un encadré « Météo extérieure » sous l'encadré « Mesure ».
+- Ajout d'un champ de ville avec mémorisation de la dernière ville choisie comme favori local.
+- Recherche automatique des coordonnées de la ville via le géocodage Open-Meteo.
+- Récupération des conditions actuelles via Open-Meteo, sans compte ni clé API.
+- Affichage de la température, de l'humidité relative, de l'humidité absolue, du statut, de l'HR correspondant à 10 g/m³ et du point de rosée avec une présentation proche de l'encadré « Mesure ».
+- Ajout d'un bouton « Actualiser » pour récupérer les données météo.
+- Ajout d'un bouton « Archiver la mesure » pour enregistrer la météo.
+- Le nom de la ville est enregistré dans le champ « Pièce » de l'historique.
+- Les villes météo archivées sont automatiquement ajoutées aux possibilités du filtre « Pièce ».
+- Conservation de toutes les fonctions de la v19.
+
 v19
-- Le filtre « Heure » est remplacé par un seul filtre sous forme de liste, avec une option par heure de 00 h à 23 h.
-- Le filtre « Date » utilise désormais un sélecteur de date avec calendrier mensuel pour choisir directement le jour.
+- Filtre horaire remplacé par une seule liste déroulante 00 h à 23 h.
+- Filtre de date remplacé par un sélecteur de date avec calendrier mensuel.
+- Conservation des autres filtres, de la suppression individuelle et des fonctions de sauvegarde.
 
 v18
-- Ajout d'un filtre pour chacune des informations de l'historique : date, heure, pièce, température, humidité relative, humidité absolue, HR max à 10 g/m³, point de rosée et statut.
-- Les filtres numériques acceptent une valeur précise, une comparaison (>20, <50, >=20, <=50) ou une plage (20-25).
-- Ajout d'un bouton « Effacer les filtres ».
-- L'historique indique le nombre de mesures affichées par rapport au nombre total.
+- Ajout de filtres à l'historique pour chaque information.
+- Filtres numériques avec valeur précise, supérieur, inférieur et plage.
+- Ajout d'un bouton pour effacer les filtres.
+- Conservation de la suppression individuelle des mesures.
 
 v17
-- Ajout d'une action « Supprimer » sur chaque ligne de l'historique.
-- Une confirmation est demandée avant la suppression d'une mesure.
-- La suppression retire uniquement la mesure de l'historique local.
-- Un fichier JSON de sauvegarde déjà téléchargé n'est pas modifié.
-- Suppression de tout commentaire décrivant les modifications dans le pied de page de l'application.
+- Ajout de la suppression individuelle d'une ligne de l'historique.
+- Confirmation avant suppression.
+- Le fichier JSON de sauvegarde déjà téléchargé reste inchangé.
 
 v16
+- Suppression du graphique ajouté en v14.
 - Retour à l'interface sans graphique.
-- Suppression du code du graphique ajouté en v14.
-- Renforcement de la mise à jour du service worker et purge des anciens caches.
-- Ajout du fichier CHANGELOG.txt.
+- Renforcement de la mise à jour du service worker.
+- Ajout de l'historique des versions dans CHANGELOG.txt.
 
 v15
 - Retour à l'interface de la v13.
 - Suppression du graphique de la v14.
-- Mise à jour du service worker pour forcer la prise en compte de la nouvelle version.
+- Mise à jour du service worker pour éviter la conservation de l'ancienne interface en cache.
 
 v14
 - Ajout d'un graphique d'évolution de l'humidité absolue dans l'historique.
-- Comparaison des pièces avec la localisation « Extérieur ».
+- Comparaison des pièces avec l'extérieur.
+- Version finalement abandonnée.
 
 v13
 - Ajout de l'encadré « Données climatiques de référence ».
 - Ajout du tableau mensuel d'humidité absolue moyenne.
-- Modification de l'encadré « Repères » avec les plages d'humidité absolue et le ressenti.
+- Modification de l'encadré « Repères » avec les colonnes humidité absolue et ressenti.
 - Remplacement du texte final par le numéro de version et la date de création.
 
 v12
-- Ajout de la balise noindex, nofollow.
-- Ajout du fichier robots.txt pour demander aux moteurs de recherche de ne pas indexer l'application.
-- Renforcement de la mise à jour du service worker.
+- Ajout de noindex/nofollow pour limiter l'indexation par les moteurs de recherche.
+- Ajout de robots.txt.
+- Renforcement de la gestion du cache du service worker.
 
 v11
 - Ajout de la localisation « Extérieur ».
@@ -52,33 +64,33 @@ v10
 - Renommage de « Mesure N°1 » en « Mesure ».
 
 v9
-- Passage à une seule mesure au lieu de deux.
+- Passage de deux mesures à une seule mesure.
 
 v8
-- Ajout de la suppression de l'historique local.
-- La suppression de l'historique n'efface pas le fichier JSON de sauvegarde téléchargé.
+- Ajout de « Supprimer l'historique ».
+- La suppression de l'historique ne modifie pas le fichier JSON de sauvegarde déjà exporté.
 
 v7
-- Ajout d'une fonction de suppression des valeurs affichées.
-- Cette fonction a ensuite été abandonnée au profit de la gestion de l'historique.
+- Ajout temporaire d'une fonction de suppression des valeurs affichées.
+- Fonction finalement abandonnée.
 
 v6
-- Base de travail avant le passage aux versions à une seule mesure.
-- Conservation de l'archivage local et de l'export de l'historique.
+- Base de référence reprise pour la suite du projet.
+- Conservation de l'archivage local et des sauvegardes JSON.
 
 v5
-- Évolution de l'interface et des fonctions d'archivage du calculateur.
+- Évolution de l'interface et des fonctions d'archivage.
 
 v4
-- Poursuite de la conversion du calculateur en application web installable.
+- Évolution du calculateur et de l'interface PWA.
 
 v3
 - Ajout et amélioration des fonctions d'archivage et d'export.
 
 v2
-- Première évolution de l'application après la version initiale.
+- Première évolution de l'interface PWA et du calculateur.
 
 v1
 - Première version du calculateur d'humidité.
-- Calcul de l'humidité absolue, de l'humidité relative correspondant à 10 g/m³ et du point de rosée.
-- Archivage des mesures et export de l'historique.
+- Calcul de l'humidité absolue, de l'HR correspondant à 10 g/m³, du point de rosée et du statut.
+- Archivage local et export des mesures.
