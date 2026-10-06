@@ -1,41 +1,42 @@
 HISTORIQUE DES VERSIONS
-Calculateur d’humidité
+Calculateur d'humidité
+
+v17
+- Ajout d'une action « Supprimer » sur chaque ligne de l'historique.
+- Une confirmation est demandée avant la suppression d'une mesure.
+- La suppression retire uniquement la mesure de l'historique local.
+- Un fichier JSON de sauvegarde déjà téléchargé n'est pas modifié.
+- Suppression de tout commentaire décrivant les modifications dans le pied de page de l'application.
 
 v16
-- Suppression définitive du graphique ajouté dans la v14.
-- Retour à l’interface sans graphique, basée sur la v13/v15.
-- Vérification que le fichier index.html ne contient aucun élément de graphique.
-- Ajout de CHANGELOG.txt avec l’historique complet des versions.
-- Passage du service worker en v16.
-- Suppression automatique des anciens caches humidite-pwa-* lors de l’activation du nouveau service worker.
-- Conservation de l’historique local existant dans localStorage.
+- Retour à l'interface sans graphique.
+- Suppression du code du graphique ajouté en v14.
+- Renforcement de la mise à jour du service worker et purge des anciens caches.
+- Ajout du fichier CHANGELOG.txt.
 
 v15
-- Retour à l’interface de la v13.
+- Retour à l'interface de la v13.
 - Suppression du graphique de la v14.
-- Mise à jour du service worker pour forcer la prise en compte de la nouvelle version sans effacer l’historique local.
+- Mise à jour du service worker pour forcer la prise en compte de la nouvelle version.
 
 v14
-- Ajout d’un graphique d’évolution de l’humidité absolue dans l’historique.
-- Affichage de toutes les pièces.
-- Mise en évidence de la courbe « Extérieur ».
-- Version abandonnée ensuite à la demande de l’utilisateur.
+- Ajout d'un graphique d'évolution de l'humidité absolue dans l'historique.
+- Comparaison des pièces avec la localisation « Extérieur ».
 
 v13
+- Ajout de l'encadré « Données climatiques de référence ».
+- Ajout du tableau mensuel d'humidité absolue moyenne.
+- Modification de l'encadré « Repères » avec les plages d'humidité absolue et le ressenti.
 - Remplacement du texte final par le numéro de version et la date de création.
-- Modification de l’encadré « Repères » avec les colonnes « Humidité absolue » et « Ressenti ».
-- Ajout de l’encadré « Données à connaître ».
-- Ajout du tableau mensuel de l’humidité absolue moyenne en France.
 
 v12
 - Ajout de la balise noindex, nofollow.
-- Ajout de robots.txt pour limiter l’indexation par les moteurs de recherche.
-- Mise à jour du service worker.
+- Ajout du fichier robots.txt pour demander aux moteurs de recherche de ne pas indexer l'application.
+- Renforcement de la mise à jour du service worker.
 
 v11
 - Ajout de la localisation « Extérieur ».
-- Suppression de la colonne « Mesure » de l’historique et de l’export Excel.
-- Mise à jour du service worker.
+- Suppression de la colonne « Mesure » de l'historique et de l'export Excel.
 
 v10
 - Renommage de « Mesure N°1 » en « Mesure ».
@@ -44,31 +45,30 @@ v9
 - Passage à une seule mesure au lieu de deux.
 
 v8
-- Ajout du bouton « Supprimer l’historique ».
-- Suppression uniquement de l’historique local de l’application.
-- Conservation indépendante du fichier JSON de sauvegarde.
+- Ajout de la suppression de l'historique local.
+- La suppression de l'historique n'efface pas le fichier JSON de sauvegarde téléchargé.
 
 v7
-- Ajout temporaire du bouton « Supprimer les valeurs affichées ».
-- Version ensuite abandonnée au profit du fonctionnement de la v6/v8.
+- Ajout d'une fonction de suppression des valeurs affichées.
+- Cette fonction a ensuite été abandonnée au profit de la gestion de l'historique.
 
 v6
-- Base de travail conservée pour la suite du projet.
-- Gestion de l’archive et sauvegarde JSON.
+- Base de travail avant le passage aux versions à une seule mesure.
+- Conservation de l'archivage local et de l'export de l'historique.
 
 v5
-- Évolution de l’interface du calculateur et de la gestion de l’historique.
+- Évolution de l'interface et des fonctions d'archivage du calculateur.
 
 v4
-- Évolution du calculateur et amélioration de l’interface PWA.
+- Poursuite de la conversion du calculateur en application web installable.
 
 v3
-- Ajout et amélioration des fonctions d’archivage/export.
+- Ajout et amélioration des fonctions d'archivage et d'export.
 
 v2
-- Première évolution de l’interface et du calculateur initial.
+- Première évolution de l'application après la version initiale.
 
 v1
-- Première version du calculateur d’humidité converti depuis le tableur Excel.
-- Calcul de l’humidité absolue, de l’humidité relative maximale à 10 g/m³, du point de rosée et du statut d’humidité.
-- Première gestion de l’historique local et de l’export des mesures.
+- Première version du calculateur d'humidité.
+- Calcul de l'humidité absolue, de l'humidité relative correspondant à 10 g/m³ et du point de rosée.
+- Archivage des mesures et export de l'historique.
