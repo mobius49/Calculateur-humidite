@@ -1,6 +1,12 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v18
+- Ajout d'un filtre pour chacune des informations de l'historique : date, heure, pièce, température, humidité relative, humidité absolue, HR max à 10 g/m³, point de rosée et statut.
+- Les filtres numériques acceptent une valeur précise, une comparaison (>20, <50, >=20, <=50) ou une plage (20-25).
+- Ajout d'un bouton « Effacer les filtres ».
+- L'historique indique le nombre de mesures affichées par rapport au nombre total.
+
 v17
 - Ajout d'une action « Supprimer » sur chaque ligne de l'historique.
 - Une confirmation est demandée avant la suppression d'une mesure.
