@@ -1,6 +1,10 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v19
+- Le filtre « Heure » est remplacé par un seul filtre sous forme de liste, avec une option par heure de 00 h à 23 h.
+- Le filtre « Date » utilise désormais un sélecteur de date avec calendrier mensuel pour choisir directement le jour.
+
 v18
 - Ajout d'un filtre pour chacune des informations de l'historique : date, heure, pièce, température, humidité relative, humidité absolue, HR max à 10 g/m³, point de rosée et statut.
 - Les filtres numériques acceptent une valeur précise, une comparaison (>20, <50, >=20, <=50) ou une plage (20-25).

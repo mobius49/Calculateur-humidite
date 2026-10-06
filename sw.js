@@ -1,12 +1,12 @@
-const CACHE='humidite-pwa-v18';
+const CACHE='humidite-pwa-v19';
 const FILES=['./','./index.html','./manifest.webmanifest','./sw.js','./robots.txt','./CHANGELOG.txt'];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))) });
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
   const keys=await caches.keys();
   await Promise.all(keys.filter(k=>k.startsWith('humidite-pwa-')&&k!==CACHE).map(k=>caches.delete(k)));
   await self.clients.claim();
   const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});
-  clients.forEach(client=>client.postMessage({type:'APP_UPDATED',version:'18'}));
+  clients.forEach(client=>client.postMessage({type:'APP_UPDATED',version:'19'}));
 })()));
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET') return;
