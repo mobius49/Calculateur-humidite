@@ -1,10 +1,13 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v26
+- Reprise de la base v24, sans la modification de défilement vertical de la v25.
+- À chaque chargement ou rafraîchissement de la page, le filtre de date de l’historique est automatiquement réglé sur la date locale du jour.
+- Les autres filtres et fonctions sont conservés.
+
 v25
-- L’historique utilise désormais un défilement vertical dans son propre cadre, en plus du défilement horizontal déjà disponible.
-- Lorsque plus de 20 mesures correspondent aux filtres, le cadre est dimensionné pour afficher 20 lignes de mesures ; les autres restent accessibles en faisant défiler le tableau.
-- Les filtres et toutes les fonctions d’archivage, suppression, export et sauvegarde continuent de porter sur l’historique complet.
+- Version intermédiaire avec défilement vertical de l’historique, abandonnée au profit de la v26.
 
 v24
 - Le fichier de sauvegarde JSON utilise désormais un nom fixe : sauvegarde_calculateur_humidite.json, sans date dans le nom.
