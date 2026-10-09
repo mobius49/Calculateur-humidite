@@ -1,6 +1,11 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v25
+- L’historique utilise désormais un défilement vertical dans son propre cadre, en plus du défilement horizontal déjà disponible.
+- Lorsque plus de 20 mesures correspondent aux filtres, le cadre est dimensionné pour afficher 20 lignes de mesures ; les autres restent accessibles en faisant défiler le tableau.
+- Les filtres et toutes les fonctions d’archivage, suppression, export et sauvegarde continuent de porter sur l’historique complet.
+
 v24
 - Le fichier de sauvegarde JSON utilise désormais un nom fixe : sauvegarde_calculateur_humidite.json, sans date dans le nom.
 - Ajout d’une coche verte centrée à l’écran après l’archivage réussi d’une mesure classique ou météo ; elle disparaît automatiquement après 1,5 seconde.
