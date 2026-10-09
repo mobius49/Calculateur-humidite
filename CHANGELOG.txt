@@ -1,6 +1,11 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v24
+- Le fichier de sauvegarde JSON utilise désormais un nom fixe : sauvegarde_calculateur_humidite.json, sans date dans le nom.
+- Ajout d’une coche verte centrée à l’écran après l’archivage réussi d’une mesure classique ou météo ; elle disparaît automatiquement après 1,5 seconde.
+- Mise à jour du service worker et de la version affichée.
+
 v23
 - Correction de l’affichage de « HR max 10 g/m³ » pour les archives météo Open-Meteo : la valeur est réellement enregistrée comme « - » et ne peut plus être convertie en 0,0 %.
 - Conservation de « - » pour le champ « Statut » des archives météo.
