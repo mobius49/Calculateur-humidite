@@ -1,3 +1,9 @@
+v27 — 11 octobre 2026
+- Correction de la déclaration des icônes PWA : ajout des icônes 192 × 192 et 512 × 512 dans le manifeste.
+- Utilisation du choix 1 d’origine comme icône de l’application.
+- Mise à jour du cache du service worker pour inclure les icônes et forcer le remplacement du cache précédent.
+- Aucune modification des fonctionnalités du calculateur ni des données archivées localement.
+
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 

@@ -1,10 +1,24 @@
 {
-  "name":"Calculateur d'humidité",
-  "short_name":"Humidité",
-  "start_url":"./",
-  "display":"standalone",
-  "background_color":"#eef3f7",
-  "theme_color":"#1769aa",
-  "lang":"fr-FR",
-  "icons":[]
+  "name": "Calculateur d’humidité",
+  "short_name": "Humidité",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef3f7",
+  "theme_color": "#1769aa",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
