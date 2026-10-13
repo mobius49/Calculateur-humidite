@@ -1,6 +1,11 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v28.1 (modification mineure)
+- Lorsqu’on sélectionne le champ numérique de température ou d’humidité relative, sa valeur est effacée pour permettre une nouvelle saisie immédiate.
+- Si le champ est quitté sans nouvelle saisie, l’ancienne valeur est restaurée.
+- Les curseurs, les calculs, l’historique et les archives restent inchangés.
+
 v28
 - Nom complet et nom court de l’application harmonisés sur « Calculateur d'humidité ».
 - Déclaration des icônes PWA 192 × 192 et 512 × 512 dans le manifeste.
