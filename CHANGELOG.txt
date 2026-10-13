@@ -1,6 +1,10 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v28.2 (correction mineure)
+- Correction du numéro de version affiché en bas de l’application : 28.2.
+- Les fonctionnalités de la v28.1 sont conservées.
+
 v28.1 (modification mineure)
 - Lorsqu’on sélectionne le champ numérique de température ou d’humidité relative, sa valeur est effacée pour permettre une nouvelle saisie immédiate.
 - Si le champ est quitté sans nouvelle saisie, l’ancienne valeur est restaurée.
