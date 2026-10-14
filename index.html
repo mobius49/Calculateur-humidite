@@ -26,8 +26,8 @@ input[type=range]{width:100%;accent-color:#1769aa}.range-row{display:flex;align-
 @media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:15px}.room-list{grid-template-columns:1fr}}
 footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.weather-city-row{display:flex;gap:10px;align-items:end}.weather-city-row>div{flex:1}.weather-city-row .button{white-space:nowrap}.weather-meta{margin-top:10px}.weather-status{margin-top:10px;font-weight:700}.weather-status.ok{color:#16723b}.weather-status.warn{color:#9b6500}.weather-status.bad{color:#b42318}.city-suggestions{position:relative}.city-suggestions-list{position:absolute;left:0;right:0;top:100%;z-index:10;background:#fff;border:1px solid #c9d3dc;border-radius:0 0 12px 12px;box-shadow:0 5px 14px #0002;overflow:hidden}.city-suggestion{display:block;width:100%;padding:11px 12px;text-align:left;border:0;border-bottom:1px solid #edf1f4;background:#fff;font:inherit;cursor:pointer}.city-suggestion:last-child{border-bottom:0}.city-suggestion:hover{background:#f1f6fa}.city-suggestion small{color:#66727e}@media(max-width:560px){.weather-grid{grid-template-columns:1fr}.weather-city-row{align-items:stretch;flex-direction:column}.weather-city-row .button{width:100%}}
 
-/* v30 — disposition bureau en trois colonnes, palette bleue conservée */
-@media(min-width:1180px){
+/* v30.1 — active aussi la disposition bureau sur Chrome mobile en mode « site pour ordinateur » */
+@media(min-width:900px){
   body{background:#edf3f8;background-image:radial-gradient(#c8d9e8 0.65px,transparent 0.65px);background-size:15px 15px}
   header{padding:17px 30px 16px;background:linear-gradient(115deg,#123d67 0%,#1769aa 58%,#245b83 100%);border-bottom:4px solid #58a9e8;box-shadow:0 5px 18px #163c5c25}
   header h1{font-size:24px;letter-spacing:.15px}
@@ -61,12 +61,12 @@ footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-
   .secondary{border:1px solid #d2e0eb;background:#edf4f9}
   footer{grid-column:1/-1;padding-top:12px}
 }
-@media(min-width:1180px) and (max-width:1450px){
-  main{grid-template-columns:minmax(245px,.85fr) minmax(245px,.8fr) minmax(500px,1.5fr);padding:18px;gap:12px}
-  main>.card{padding:13px}
-  .archive-table{min-width:720px}
+@media(min-width:900px) and (max-width:1100px){
+  main{grid-template-columns:minmax(205px,.78fr) minmax(205px,.78fr) minmax(420px,1.6fr);padding:12px;gap:10px}
+  main>.card{padding:11px}
+  .archive-table{min-width:680px}
 }
-@media(min-width:700px) and (max-width:1179px){
+@media(min-width:700px) and (max-width:899px){
   main{max-width:1100px}
   main>.card{border-radius:14px}
 }
@@ -104,7 +104,7 @@ footer{text-align:center;color:#66727e;font-size:12px;padding:8px 10px}.weather-
 <section class="card"><h2>Historique</h2><div class="filter-bar"><button id="resetFilters" class="button secondary" type="button">✖ Effacer les filtres</button><span class="muted">Les filtres s'appliquent à chaque colonne. Pour les valeurs numériques : <strong>&gt;20</strong>, <strong>&lt;50</strong>, <strong>20-25</strong> ou une valeur précise.</span></div><div class="table-wrap"><table class="archive-table"><thead><tr><th>Date</th><th>Heure</th><th>Lieu</th><th>Température</th><th>HR</th><th>Humidité absolue</th><th>HR max 10 g/m³</th><th>Point de rosée</th><th>Chauffage allumé</th><th>Statut</th><th>Action</th></tr><tr class="filter-row"><th><input class="filter-input filter-date" id="filterDate" type="date" aria-label="Choisir une date"></th><th><select class="filter-input filter-hour" id="filterTime"><option value="">Toutes les heures</option></select></th><th><select class="filter-input" id="filterRoom"><option value="">Toutes</option></select></th><th><input class="filter-input" id="filterT" type="text" inputmode="decimal" placeholder="ex. &gt;20"></th><th><input class="filter-input" id="filterRh" type="text" inputmode="decimal" placeholder="ex. 50-70"></th><th><input class="filter-input" id="filterAbs" type="text" inputmode="decimal" placeholder="ex. &gt;10"></th><th><input class="filter-input" id="filterMax" type="text" inputmode="decimal" placeholder="ex. &lt;60"></th><th><input class="filter-input" id="filterDew" type="text" inputmode="decimal" placeholder="ex. 10-15"></th><th><select class="filter-input" id="filterHeating"><option value="">Tous</option><option value="Oui">Oui</option><option value="Non">Non</option></select></th><th><select class="filter-input" id="filterStatus"><option value="">Tous</option><option value="L'air est trop sec">L'air est trop sec</option><option value="L'air est un peu trop sec">L'air est un peu trop sec</option><option value="Humidité absolue correcte">Humidité absolue correcte</option><option value="Humidité absolue à surveiller">Humidité absolue à surveiller</option><option value="Humidité absolue trop élevée">Humidité absolue trop élevée</option></select></th><th></th></tr></thead><tbody id="archiveBody"></tbody></table></div></section>
 <section class="card"><h2>Repères</h2><div class="table-wrap"><table class="archive-table" style="min-width:0"><thead><tr><th>Humidité absolue</th><th>Ressenti</th></tr></thead><tbody><tr><td>0–4 g/m³</td><td>L'air est trop sec</td></tr><tr><td>4–6 g/m³</td><td>L'air est un peu trop sec</td></tr><tr><td>6–10 g/m³</td><td>Humidité absolue correcte</td></tr><tr><td>10–12 g/m³</td><td>Humidité absolue à surveiller</td></tr><tr><td>&gt; 12 g/m³</td><td>Humidité absolue trop élevée</td></tr></tbody></table></div></section>
 <section class="card"><h2>Données climatiques de référence</h2><p class="muted">Ordres de grandeur mensuels pour la France métropolitaine. L'humidité absolue est calculée à partir de la température moyenne et de l'humidité relative moyenne mensuelles.</p><div class="table-wrap"><table class="archive-table" style="min-width:0"><thead><tr><th>Mois</th><th>Humidité absolue moyenne</th></tr></thead><tbody><tr><td>Janvier</td><td>5,5 g/m³</td></tr><tr><td>Février</td><td>5,5 g/m³</td></tr><tr><td>Mars</td><td>6,6 g/m³</td></tr><tr><td>Avril</td><td>8,1 g/m³</td></tr><tr><td>Mai</td><td>10,0 g/m³</td></tr><tr><td>Juin</td><td>12,6 g/m³</td></tr><tr><td>Juillet</td><td>13,7 g/m³</td></tr><tr><td>Août</td><td>13,1 g/m³</td></tr><tr><td>Septembre</td><td>10,9 g/m³</td></tr><tr><td>Octobre</td><td>9,1 g/m³</td></tr><tr><td>Novembre</td><td>7,1 g/m³</td></tr><tr><td>Décembre</td><td>5,9 g/m³</td></tr></tbody></table></div><p class="muted" style="margin-top:10px">Référence climatique : températures et humidités relatives mensuelles moyennes pour la France. L'humidité absolue est dérivée de ces valeurs avec la même relation de calcul que celle utilisée par le calculateur.</p></section>
-<footer>Version 30 · créée le 14 octobre 2026</footer>
+<footer>Version 30.1 · créée le 14 octobre 2026</footer>
 </main>
 <div id="successToast" class="success-toast" aria-live="polite" aria-hidden="true"><span>✓</span></div>
 <div id="roomModal" class="modal" aria-hidden="true"><div class="sheet"><h3>Choisir la pièce</h3><p>La mesure actuelle sera enregistrée immédiatement avec la pièce choisie.</p><div id="roomList" class="room-list"></div><button id="closeModal" class="button secondary close">Annuler</button></div></div>

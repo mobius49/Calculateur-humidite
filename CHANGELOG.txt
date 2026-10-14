@@ -1,3 +1,8 @@
+v30.1 — 14 octobre 2026
+- Correction du seuil d’activation de la disposition PC : les trois colonnes s’activent dès 900 px de largeur CSS, ce qui permet généralement de les afficher lorsque Chrome Android demande le « site pour ordinateur ».
+- Ajustement des proportions pour les fenêtres plus étroites (900 à 1100 px).
+- Incrément du cache du service worker pour forcer le chargement des nouveaux fichiers.
+
 v30 — 14 octobre 2026
 - Refonte majeure de la présentation sur ordinateur avec trois colonnes : Mesure et Météo extérieure à gauche, Repères et Données à connaître au centre, Historique à droite.
 - Conservation de la palette bleu foncé, bleu et blanc, avec des bordures plus affirmées, des accents de section, des ombres discrètes et une alternance de lignes dans le tableau pour une interface moins lisse.
