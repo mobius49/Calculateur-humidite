@@ -1,3 +1,10 @@
+v30.4 — 14 octobre 2026
+- Ajout d’un petit bouton carré avec icône d’œil uniquement pour afficher ou masquer les lignes de moyennes dans l’historique, sans texte visible.
+- Le bouton masque/affiche la moyenne des pièces et les moyennes individuelles des villes, sans modifier les archives ni les filtres.
+- Au clic dans le champ de ville météo, le texte courant est effacé pour permettre la saisie immédiate d’une nouvelle ville ; l’autocomplétion reste disponible et la dernière ville mémorisée reste enregistrée.
+- Conservation des moyennes par pièce et par ville, des corrections de présentation PC et de toutes les fonctions précédentes.
+- Mise à jour du cache du service worker et du numéro de version affiché.
+
 v30.3 — 14 octobre 2026
 - Séparation des moyennes de l’historique : la ligne « MOYENNE DES PIÈCES » ne prend en compte que les mesures des pièces intérieures affichées après filtrage.
 - Ajout d’une ligne de moyenne distincte pour chaque ville ayant au moins une mesure dans les résultats affichés ; les villes sont triées par ordre alphabétique.
