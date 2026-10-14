@@ -1,3 +1,10 @@
+v30.2 — 14 octobre 2026
+- Ajout d’une ligne de moyennes dans l’historique, entre les filtres et les mesures affichées.
+- Les moyennes se recalculent selon les filtres actifs et portent uniquement sur la température, l’humidité relative (HR), l’humidité absolue, l’HR max à 10 g/m³ et le point de rosée.
+- Pour l’HR max, les relevés extérieurs sans valeur numérique sont exclus du calcul ; si aucune valeur numérique n’est disponible, un tiret est affiché.
+- Sur PC, les cartes de chaque colonne sont alignées en haut mais conservent leur hauteur naturelle ; suppression de l’étirement vertical inutile sous « Repères ».
+- Conservation du contenu, des archives et des fonctionnalités existantes ; cache du service worker incrémenté.
+
 v30.1 — 14 octobre 2026
 - Correction du seuil d’activation de la disposition PC : les trois colonnes s’activent dès 900 px de largeur CSS, ce qui permet généralement de les afficher lorsque Chrome Android demande le « site pour ordinateur ».
 - Ajustement des proportions pour les fenêtres plus étroites (900 à 1100 px).
