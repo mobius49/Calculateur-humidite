@@ -6,7 +6,7 @@ self.addEventListener('activate',e=>e.waitUntil((async()=>{
   await Promise.all(keys.filter(k=>k.startsWith('humidite-pwa-')&&k!==CACHE).map(k=>caches.delete(k)));
   await self.clients.claim();
   const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});
-  clients.forEach(client=>client.postMessage({type:'APP_UPDATED',version:'30.2'}));
+  clients.forEach(client=>client.postMessage({type:'APP_UPDATED',version:'30.3'}));
 })()));
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;

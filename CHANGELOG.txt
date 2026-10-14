@@ -1,3 +1,10 @@
+v30.3 — 14 octobre 2026
+- Séparation des moyennes de l’historique : la ligne « MOYENNE DES PIÈCES » ne prend en compte que les mesures des pièces intérieures affichées après filtrage.
+- Ajout d’une ligne de moyenne distincte pour chaque ville ayant au moins une mesure dans les résultats affichés ; les villes sont triées par ordre alphabétique.
+- Les lignes de moyennes se recalculent avec les filtres actifs et conservent uniquement les cinq colonnes pertinentes : température, HR, humidité absolue, HR max et point de rosée.
+- Les relevés « Extérieur » sont exclus de la moyenne des pièces et ne créent pas de ligne de ville.
+- Conservation des archives et des autres fonctionnalités ; mise à jour de la version affichée et du cache du service worker.
+
 v30.2 — 14 octobre 2026
 - Ajout d’une ligne de moyennes dans l’historique, entre les filtres et les mesures affichées.
 - Les moyennes se recalculent selon les filtres actifs et portent uniquement sur la température, l’humidité relative (HR), l’humidité absolue, l’HR max à 10 g/m³ et le point de rosée.
