@@ -1,6 +1,12 @@
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
+v28.3 (modification mineure)
+- Renommage de la colonne et du filtre « Pièce » en « Lieu », plus adapté aux pièces et aux villes.
+- Organisation du filtre avec un groupe « Pièces » conservant l’ordre habituel, puis un groupe « Villes » trié par ordre alphabétique.
+- Ajout de séparateurs visuels dans la liste déroulante.
+- Conservation des archives existantes et des autres fonctionnalités.
+
 v28.2 (correction mineure)
 - Correction du numéro de version affiché en bas de l’application : 28.2.
 - Les fonctionnalités de la v28.1 sont conservées.
