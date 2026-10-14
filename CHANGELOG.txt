@@ -154,3 +154,13 @@ v1
 - Première version du calculateur d'humidité.
 - Calcul de l'humidité absolue, de l'HR correspondant à 10 g/m³, du point de rosée et du statut.
 - Archivage local et export des mesures.
+
+v29 — 14 octobre 2026
+- Ajout de la case « Chauffage allumé » sous le curseur d'humidité relative.
+- Mémorisation du dernier état de la case dans le stockage local de l'application.
+- Enregistrement de l'état du chauffage pour les nouvelles mesures intérieures.
+- Ajout de la colonne « Chauffage allumé » à l'historique et à l'export Excel.
+- Ajout du filtre « Chauffage allumé » avec les choix Tous, Oui et Non.
+- Pour les relevés extérieurs (météo et lieu « Extérieur »), les champs chauffage, HR max à 10 g/m³ et statut affichent « - » ; les filtres HR max et statut ne les excluent pas artificiellement.
+- Les archives existantes sont conservées sans modification rétroactive ; pour les anciennes mesures sans donnée chauffage, l'affichage est « - ».
+- Mise à jour du cache du service worker et du numéro de version affiché.
