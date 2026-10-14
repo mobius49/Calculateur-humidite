@@ -1,3 +1,10 @@
+v30 — 14 octobre 2026
+- Refonte majeure de la présentation sur ordinateur avec trois colonnes : Mesure et Météo extérieure à gauche, Repères et Données à connaître au centre, Historique à droite.
+- Conservation de la palette bleu foncé, bleu et blanc, avec des bordures plus affirmées, des accents de section, des ombres discrètes et une alternance de lignes dans le tableau pour une interface moins lisse.
+- Adaptation automatique selon la largeur de l'écran ; la présentation mobile/tablette reste en disposition verticale.
+- Conservation des fonctions de mesure, météo, filtres, chauffage, historique, export Excel et sauvegarde/restauration JSON.
+- Mise à jour du cache du service worker et du numéro de version affiché.
+
 HISTORIQUE DES VERSIONS
 Calculateur d'humidité
 
