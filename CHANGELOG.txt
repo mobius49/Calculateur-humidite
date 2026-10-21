@@ -1,3 +1,10 @@
+v31 — 21 octobre 2026 (version majeure)
+- Reorganisation de la gestion de l’historique : le bouton « Exporter vers Excel » est désormais le premier bouton de cette section.
+- Déplacement du petit bouton icône seul pour afficher/masquer les moyennes immédiatement à droite de « Effacer les filtres », sur la même ligne.
+- Renommage de « Chambre 1 » en « Chambre parentale » dans la liste des lieux et les calculs de moyennes. Les archives existantes sont automatiquement renommées pour conserver leur classement comme pièce intérieure.
+- Conservation des moyennes filtrées séparées entre pièces et villes, du champ de ville vidé au clic, des corrections de présentation PC, de l’affichage mobile, des exports, sauvegardes et autres fonctionnalités.
+- Incrément de version majeure et renouvellement du cache du service worker.
+
 v30.4 — 14 octobre 2026
 - Ajout d’un petit bouton carré avec icône d’œil uniquement pour afficher ou masquer les lignes de moyennes dans l’historique, sans texte visible.
 - Le bouton masque/affiche la moyenne des pièces et les moyennes individuelles des villes, sans modifier les archives ni les filtres.
